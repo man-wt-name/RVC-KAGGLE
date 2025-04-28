@@ -16,7 +16,7 @@ ARCH="x86_64"
 
 echo "Шаг 1: Обновление списка пакетов и установка необходимых утилит..."
 sudo apt-get update
-sudo apt-get install -y --no-install-recommends gnupg2 software-properties-common wget build-essential linux-headers-$(uname -r)
+sudo apt-get install -y --no-install-recommends gnupg2 software-properties-common wget build-essential linux-headers-generic-hwe-22.04
 
 echo "Шаг 2: Добавление репозитория NVIDIA CUDA..."
 
