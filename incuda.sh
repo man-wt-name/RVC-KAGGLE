@@ -5,14 +5,13 @@ ARCH="x86_64"
 echo "Шаг 1: Обновление списка пакетов и установка необходимых утилит..."
 sudo apt-get update
 sudo apt-get install -y --no-install-recommends gnupg2 software-properties-common wget build-essential linux-headers-generic-hwe-22.04
-echo "Шаг 2: Добавление репозитория NVIDIA CUDA..."
-KEYRING_PKG="cuda-keyring_1.1-1_all.deb" # Это имя может измениться, проверьте на сайте NVIDIA
+KEYRING_PKG="cuda-keyring_1.1-1_all.deb"
 KEYRING_URL="https://developer.download.nvidia.com/compute/cuda/repos/${UBUNTU_VERSION}/${ARCH}/${KEYRING_PKG}"
 echo "Загрузка ключа репозитория из ${KEYRING_URL}..."
 wget -q ${KEYRING_URL}
 if [ ! -f ${KEYRING_PKG} ]; then
-    echo "Ошибка: Не удалось загрузить пакет ключа ${KEYRING_PKG}. Проверьте URL или настройки сети."
-    exit 1
+echo "Ошибка: Не удалось загрузить пакет ключа ${KEYRING_PKG}. Проверьте URL или настройки сети."
+exit 1
 fi
 echo "Установка пакета ключа..."
 sudo dpkg -i ${KEYRING_PKG}
